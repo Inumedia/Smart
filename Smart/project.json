@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0-*",
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+  "tooling": {
+    "defaultNamespace": "Smart"
+  },
+
+  "dependencies": {
+    "Microsoft.AspNet.Diagnostics": "1.0.0-rc2-*",
+    "Microsoft.AspNet.Hosting": "1.0.0-rc2-16161",
+    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc2-*",
+    "Microsoft.AspNet.Mvc": "6.0.0-rc2-*",
+    "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc2-*",
+    "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc2-*",
+    "Microsoft.AspNet.StaticFiles": "1.0.0-rc2-*",
+    "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc2-*",
+    "Microsoft.Extensions.Configuration.FileProviderExtensions": "1.0.0-rc2-*",
+    "Microsoft.Extensions.Configuration.Json": "1.0.0-rc2-*",
+    "Microsoft.Extensions.Logging": "1.0.0-rc2-*",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-*",
+    "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-*"
+  },
+
+  "commands": {
+    "web": "Smart"
+  },
+
+  "frameworks": {
+    "dnx451": {
+      "dependencies": {
+        "Forecast.io": "1.0.8"
+      }
+    },
+    "dnxcore50": {}
+  },
+
+  "exclude": [
+    "wwwroot",
+    "node_modules",
+    "bower_components"
+  ],
+  "publishExclude": [
+    "node_modules",
+    "bower_components",
+    "**.xproj",
+    "**.user",
+    "**.vspscc"
+  ],
+  "scripts": {
+    "prepublish": [
+      "npm install",
+      "bower install",
+      "gulp clean",
+      "gulp min"
+    ]
+  }
+}
