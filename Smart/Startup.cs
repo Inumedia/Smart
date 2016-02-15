@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Smart.Services.Geo;
+using Smart.Services.Weather;
 
 namespace Smart
 {
@@ -29,7 +30,11 @@ namespace Smart
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
+            services.AddOptions();
+
             services.AddMvc();
+
+            services.Configure<ForecastOptions>(options => options.APIKey = Configuration["ForecastIOKey"]);
             services.AddSingleton<IGeoTranslate, GeonamesTranslation>();
         }
 
