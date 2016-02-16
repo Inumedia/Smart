@@ -34,8 +34,13 @@ namespace Smart
 
             services.AddMvc();
 
-            services.Configure<ForecastOptions>(options => options.APIKey = Configuration["ForecastIOKey"]);
+            services.Configure<ForecastOptions>(options =>
+            {
+                options.APIKey = Configuration["ForecastIOKey"];
+                options.ZipCode = int.Parse(Configuration["ZipCode"]);
+            });
             services.AddSingleton<IGeoTranslate, GeonamesTranslation>();
+            services.AddTransient<IForecast, Smart.Services.Weather.ForecastIO>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

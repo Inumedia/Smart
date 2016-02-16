@@ -32,8 +32,7 @@
       "dependencies": {
         "Forecast.io": "1.0.8"
       }
-    },
-    "dnxcore50": {}
+    }
   },
 
   "exclude": [
